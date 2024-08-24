@@ -4,9 +4,9 @@
 
 
 .bgMain {
-    @apply bg-white dark:bg-myColor-100;
+    @apply bg-white dark:bg-myColor-300;
 }
 
 .bgHeader {
-    @apply bg-myColor-200 text-black hover:bg-myColor-200 dark:bg-myColor-200 dark:hover:bg-myColor-200 dark:text-black !important;
+    @apply bg-myColor-200 text-white hover:bg-myColor-200 dark:bg-myColor-300 dark:hover:bg-myColor-300 dark:text-white !important;
 }

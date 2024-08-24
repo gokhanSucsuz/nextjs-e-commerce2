@@ -7,13 +7,13 @@ interface RoutesLayoutProps {
 }
 
 const RoutesLayout = ({ children }: RoutesLayoutProps) => {
-	return (
-		<div>
+	return <div>
 			<Header />
-			{children}
+			<div className="min-h-screen">
+				{children}
+			</div>
 			<Footer />
-		</div>
-	);
+		</div>;
 };
 
 export default RoutesLayout;
