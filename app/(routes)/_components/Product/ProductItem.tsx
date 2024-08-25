@@ -8,8 +8,11 @@ import {
 	CardHeader,
 	CardTitle
 } from "@/components/ui/card";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import ProductModal from "./ProductModal";
+import ProductToast from "./ProductToast";
 
 interface ProductItemProps {
 	product: ProductType;
@@ -46,9 +49,9 @@ const ProductItem = ({ product }: ProductItemProps) => {
 					</div>
 				</CardContent>
 				<CardFooter className="flex justify-between">
-					<Button variant="destructive">Detail</Button>
-					<Button variant="outline" className="bg-green-700 text-white">
-						Add to Cart
+					<ProductModal product={product} />
+					<Button variant="outline" asChild>
+						<ProductToast quantity={1} />
 					</Button>
 				</CardFooter>
 			</Card>
