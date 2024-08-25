@@ -21,8 +21,7 @@ const Header = () => {
 			router.push(`/search?query=${encodeURIComponent(query)}`);
 		}
 	};
-	return (
-		<div className="mx-auto shadow-md mt-1">
+	return <div className="mx-auto shadow-md mt-1">
 			<div className="container flex flex-row items-center justify-between">
 				<div>
 					<h2 className={`${courgetteFont.className} text-xl capitalize`}>
@@ -30,17 +29,8 @@ const Header = () => {
 					</h2>
 				</div>
 				<div className="hidden md:flex relative md:min-w-96 lg:w-1/2">
-					<Input
-						type="text"
-						placeholder="search..."
-						className="w-full border-2"
-						onChange={e => setQuery(e.target.value)}
-					/>
-					<Button
-						variant="link"
-						className="absolute right-1"
-						onClick={handleSearch}
-					>
+					<Input type="text" placeholder="search..." className="w-full border-2" onChange={e => setQuery(e.target.value)} />
+					<Button variant="link" className="absolute right-1" onClick={handleSearch}>
 						<Search />
 					</Button>
 				</div>
@@ -54,15 +44,14 @@ const Header = () => {
 						<User2Icon />
 					</Link>
 				</div>
-				<div className="flex md:hidden px-4">
+				<div className="flex md:hidden px-3">
 					<MobileMenu />
 				</div>
 			</div>
 			<div>
 				<NavMenu />
 			</div>
-		</div>
-	);
+		</div>;
 };
 
 export default Header;
