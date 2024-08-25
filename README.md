@@ -1,4 +1,4 @@
-Project demo is here = > https://nextjs-e-commerce2-seven.vercel.app/
+Project demo is here = > https://nextjs-e-commerce2-self.vercel.app/
 
 
 
