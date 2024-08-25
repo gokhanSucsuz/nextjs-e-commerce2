@@ -16,11 +16,13 @@ const courgetteFont = Courgette({ subsets: ["latin"], weight: "400" });
 const Header = () => {
 	const router = useRouter();
 	const [query, setQuery] = useState("");
+
 	const handleSearch = () => {
 		if (query.trim()) {
 			router.push(`/search?query=${encodeURIComponent(query)}`);
 		}
 	};
+
 	return <div className="mx-auto shadow-md mt-1">
 			<div className="container flex flex-row items-center justify-between">
 				<div>
