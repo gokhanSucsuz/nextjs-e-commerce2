@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import AccordionFAQ from "../_components/AccordionFAQ";
 import AlertDialogExample from "../_components/AlertDialogExample";
 
-export function ContactPage() {
+const ContactPage = () => {
 	return (
 		<div className="container mx-auto">
 			<div className="flex flex-row items-center justify-center">
@@ -17,6 +17,6 @@ export function ContactPage() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ContactPage;
