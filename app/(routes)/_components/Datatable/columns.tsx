@@ -1,5 +1,3 @@
-// components/Datatable/columns.tsx
-
 import { ColumnDef } from "@tanstack/react-table";
 
 export type Payment = {
