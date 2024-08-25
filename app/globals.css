@@ -10,3 +10,10 @@
 .bgHeader {
     @apply bg-myColor-200 text-white hover:bg-myColor-200 dark:bg-myColor-300 dark:hover:bg-myColor-300 dark:text-white !important;
 }
+.validLabel {
+    @apply text-black dark:text-white !important;
+}
+
+.validError {
+    @apply text-red-600 dark:text-red-300 !important;
+}

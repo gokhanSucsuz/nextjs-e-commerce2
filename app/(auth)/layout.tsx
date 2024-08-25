@@ -6,21 +6,14 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
-	return (
-		<div className="flex flex-row items-center justify-center">
+	return <div className="flex flex-row items-center justify-center">
 			<div className="hidden lg:block lg:w-2/5 h-screen">
-				<Image
-					alt="logo"
-					src={`/login.jpg`}
-					priority
-					width={1080}
-					height={1920}
-					className="w-full h-screen object-cover brightness-[.7]"
-				/>
+				<Image alt="logo" src={`/login.jpg`} priority width={1080} height={1920} className="w-full h-screen object-cover brightness-[.7]" />
 			</div>
-			<div className="w-3/5">{children}</div>
-		</div>
-	);
+			<div className="w-full lg:w-3/5 flex items-center min-h-screen justify-center p-4">
+				{children}
+			</div>
+		</div>;
 };
 
 export default AuthLayout;
