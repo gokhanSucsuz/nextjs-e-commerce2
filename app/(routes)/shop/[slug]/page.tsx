@@ -35,29 +35,7 @@ const ShopDetailPage = ({ params }: ShopDetailPageProps) => {
 		return <div>Project not found!</div>;
 	}
 
-	const jsonLd = {
-		"@context": "https://schema.org",
-		"@type": "Product",
-		name: project.title,
-		image: project.image,
-		description: project.description,
-		datePublished: project.publishedAt,
-		dateModified: project.updatedAt,
-		author: { "@type": "Person", name: project.author },
-		offers: {
-			"@type": "Offer",
-			url: project.href,
-			priceCurrency: "USD",
-			price: "0.00",
-			availability: "https://schema.org/InStock",
-			itemCondition: "https://schema.org/NewCondition"
-		},
-		aggregateRating: {
-			"@type": "AggregateRating",
-			ratingValue: "4.8",
-			reviewCount: "120"
-		}
-	};
+	const jsonLd = { "@context": "https://schema.org", "@type": "Product", name: project.title, image: "", description: project.description, datePublished: "", dateModified: "", author: { "@type": "Person", name: "Gökhan SUÇSUZ" }, offers: { "@type": "Offer", url: project.href, priceCurrency: "USD", price: "0.00", availability: "https://schema.org/InStock", itemCondition: "https://schema.org/NewCondition" }, aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "120" } };
 
 	return (
 		<div>
