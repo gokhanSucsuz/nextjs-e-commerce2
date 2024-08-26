@@ -1,7 +1,8 @@
-"use client";
-import React, { useState } from "react";
+"use client"
+import React, { useState, useMemo } from "react";
+import Head from "next/head";
 import { useReactTable, SortingState, ColumnFiltersState, VisibilityState, flexRender, getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel } from "@tanstack/react-table";
-import { Payment, columns } from "../_components/Datatable/columns"; // Düzeltilmiş import
+import { Payment, columns } from "../_components/Datatable/columns";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -11,9 +12,10 @@ export default function AboutPage() {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  const data: Payment[] = [
+  const data: Payment[] = useMemo(() => [
     { id: "m5gr84i9", product: "product 1", amount: 316, status: "success", email: "ken99@yahoo.com" },
-  ];
+    
+  ], []);
 
   const table = useReactTable({
     data,
@@ -34,52 +36,69 @@ export default function AboutPage() {
     },
   });
 
+  const jsonLd = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    author: "gokhansucsuz",
+    isPublished: true,
+    tags: ["web development", "nextjs", "reactjs", "frontend developer","fullstack developer"]
+  }), []);
+
   return (
-    <div className="w-full container border mt-10 rounded-xl dark:border-slate-600">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
-          className="max-w-sm"
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Diğer bileşenler */}
-      </div>
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+      </Head>
+      
+      <div className="w-full container border mt-10 rounded-xl dark:border-slate-600">
+        <div className="flex items-center py-4">
+          <Input
+            placeholder="Filter emails..."
+            value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+            onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
+            className="max-w-sm"
+          />
+          {/* Diğer bileşenler */}
+        </div>
+        <div className="rounded-md border">
+          <Table>
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    </TableHead>
                   ))}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={columns.length} className="h-24 text-center">
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+        <div className="flex items-center justify-end space-x-2 py-4">
+          {/* Sayfalama ve diğer bileşenler */}
+        </div>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        {/* Pagination ve diğer bileşenler */}
-      </div>
-    </div>
+    </>
   );
 }

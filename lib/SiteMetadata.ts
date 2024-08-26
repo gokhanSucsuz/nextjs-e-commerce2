@@ -1,7 +1,7 @@
 export const siteMetadata = {
-	title: "Gökhan SUÇSUZ | FullStack Developer | Software Developer",
+	title: "Gökhan SUÇSUZ | React Developer | Nextjs Developer",
 	author: "Gökhan SUÇSUZ",
-	headerTitle: "Gökhan SUÇSUZ - FullStack Developer | Software Developer",
+	headerTitle: "Gökhan SUÇSUZ - React Developer | Nextjs Developer",
 	description: "Next.js, Tailwind CSS, React.js vs.",
 	language: "en-us",
 	theme: "system",
